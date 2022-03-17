@@ -14,19 +14,30 @@ public class TestaOrdenacao {
                 new Produto("Patins Usado", 60.0)
         };
 
-        for (int atual = 0; atual < produtos.length - 1; atual++){
-            int menor = buscaMenor(produtos, atual, produtos.length - 1);
-            Produto produtoAtual = produtos[atual];
-            Produto produtoMenor = produtos[menor];
-            produtos[atual] = produtoMenor;
-            produtos[menor] = produtoAtual;
-        }
+        ordena(produtos, produtos.length);
 
         for (Produto item: produtos) {
             System.out.println(item.getNome() + ", custa: " + item.getPreco());
         }
 
 
+    }
+
+    private static void ordena(Produto[] produtos, int qtdElementos) {
+        for (int atual = 0; atual < qtdElementos - 1; atual++){
+            System.out.println("Estou na posicao " + atual);
+
+            int menor = buscaMenor(produtos, atual, qtdElementos - 1);
+            System.out.println("Trocando " + atual + " com o " + menor);
+
+            Produto produtoAtual = produtos[atual];
+            Produto produtoMenor = produtos[menor];
+            System.out.println("Trocando " + produtoAtual.getNome() + " " + produtoMenor.getNome());
+            System.out.println("  ");
+
+            produtos[atual] = produtoMenor;
+            produtos[menor] = produtoAtual;
+        }
     }
 
     private static int buscaMenor(Produto[] produtos, int inicio, int termino) {
